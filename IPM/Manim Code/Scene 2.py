@@ -2,42 +2,54 @@ from manim import *
 
 class Scene2_TheTransform(Scene):
     def construct(self):
-        # Starting setup
+        # 1. Define all our math objects first
         H_matrix = Matrix([
             ["h_{11}", "h_{12}", "h_{13}"],
             ["h_{21}", "h_{22}", "h_{23}"],
             ["h_{31}", "h_{32}", "h_{33}"]
         ])
         uv1_vector = Matrix([["u"], ["v"], ["1"]])
-        
-        lhs = VGroup(H_matrix, uv1_vector).arrange(RIGHT, buff=0.2)
-        equals = MathTex("=").next_to(lhs, RIGHT, buff=0.5)
-        
-        self.play(Write(lhs), Write(equals))
-        self.wait(1)
+        equals = MathTex("=")
 
-        # The Expanded Multiplication
         expanded_matrix = Matrix([
-            ["h_{11}u + h_{12}v + h_{13}(1)"],
-            ["h_{21}u + h_{22}v + h_{23}(1)"],
-            ["h_{31}u + h_{32}v + h_{33}(1)"]
-        ]).next_to(equals, RIGHT, buff=0.5)
+            ["h_{11}u + h_{12}v + h_{13}"],
+            ["h_{21}u + h_{22}v + h_{23}"],
+            ["h_{31}u + h_{32}v + h_{33}"]
+        ])
 
+        # 2. Arrange everything in a perfect horizontal line
+        full_equation = VGroup(H_matrix, uv1_vector, equals, expanded_matrix).arrange(RIGHT, buff=0.2)
+        full_equation.scale(0.85).move_to(ORIGIN)
+
+        # 3. Animate the left side and the expanded matrix
+        self.play(Write(H_matrix), Write(uv1_vector), Write(equals))
+        self.wait(1)
         self.play(Write(expanded_matrix))
         self.wait(2)
 
-        # Collapse into new variables
+        # 4. Create our clean collapsed matrix
         collapsed_matrix = Matrix([
             ["x'"],
             ["y'"],
             ["w'"]
-        ]).next_to(equals, RIGHT, buff=0.5)
-
-        self.play(Transform(expanded_matrix, collapsed_matrix))
+        ]).scale(0.85)
         
-        # Highlight w' as the scaling factor
+        # Position it exactly where the big matrix currently is
+        collapsed_matrix.move_to(expanded_matrix.get_center())
+
+        # Use ReplacementTransform to smoothly swap them out
+        self.play(ReplacementTransform(expanded_matrix, collapsed_matrix))
+        
+        # 5. TIGHTEN AND RE-CENTER
+        # Group the remaining items and animate them sliding back together
+        final_equation = VGroup(H_matrix, uv1_vector, equals, collapsed_matrix)
+        self.play(final_equation.animate.arrange(RIGHT, buff=0.2).move_to(ORIGIN))
+        self.wait(1)
+
+        # 6. THE FIX: Highlight w' and properly place the text
         scaling_box = SurroundingRectangle(collapsed_matrix.get_entries()[2], color=YELLOW)
-        scaling_text = Text("Scaling Factor", color=YELLOW, font_size=24).next_to(scaling_box, RIGHT)
+        scaling_text = Text("Scaling Factor", color=YELLOW, font_size=24)
+        scaling_text.next_to(collapsed_matrix, RIGHT, buff=0.3).match_y(scaling_box)
         
         self.play(Create(scaling_box), Write(scaling_text))
         self.wait(2)

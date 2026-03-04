@@ -33,10 +33,6 @@ def inverse_perspective_mapping(u, v, H):
     # 3rd operation: PROJECT
     # This is our normalization step. We divide by the third component to flatten the vector back to our 2D space
 
-    if w_prime == 0:
-        #! add an example of what this means as well as an example to get this error.
-        raise ValueError("Point is at infinity! Our camera is looking at the horizon!.")
-
     x_ground = x_prime / w_prime
     y_ground = y_prime / w_prime
 
@@ -44,7 +40,6 @@ def inverse_perspective_mapping(u, v, H):
 
 # Lets try our function out with an example
 # We are supposed to perform Camera Calibration to get this homography matrix. Lets choose a dummy matrix for now
-#! make sure to create 2 more examples with the nuScenes dataset as well as with our IPG simulation with Simulink as well. ASK Munish sir if what i have done is right or not. upload a chessboard image to the IPG scene and hopefully you remember the rest my guy. 
 
 H_dummy = np.array([
     [0.5  , -0.2 ,  100],
