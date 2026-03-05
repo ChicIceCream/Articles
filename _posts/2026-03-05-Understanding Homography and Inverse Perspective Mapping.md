@@ -207,4 +207,4 @@ Let's quickly recap what we actually accomplished here:
 
 You've officially bridged the massive gap between perception and control. Keep building, keep coding, and I'll see you on the road!
 
-PS. All the code is available here: [[Chic's Den](https://chicicecream.github.io/Articles/posts/Understanding-Homography-and-Inverse-Perspective-Mapping/)] and [[My GitHub](https://github.com/ChicIceCream/Articles/tree/main/IPM)]
+PS. All the code is available here: [[My GitHub](https://github.com/ChicIceCream/Articles/tree/main/IPM)]
