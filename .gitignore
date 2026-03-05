@@ -3,7 +3,6 @@
 /IPM/nuscenes_trial.py
 /.tmp.drivedownload
 /.tmp.driveupload
-
 # Bundler cache
 .bundle
 vendor
