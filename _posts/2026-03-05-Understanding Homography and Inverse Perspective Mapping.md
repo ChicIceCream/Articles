@@ -110,7 +110,7 @@ So, what is our bridge between the camera basis (image space) and world basis? T
 
 ![Homography Matrix](/IPM/assets/h_matrix.png)
 
-When we multiply our pixel coordinates by this matrix, it physically rotates, tilts, and stretches our perspective, laying those pixels flat onto the ground's metric space. To make this happen mathematically, we perform three distinct operations: **Lift, Transform, and Project.** We shall understand these 3 operations with code and some epic animations!
+When we multiply our pixel coordinates by this matrix, it physically rotates, tilts, and stretches our perspective, laying those pixels flat onto the ground's metric space. To make this happen mathematically, we perform three distinct operations: **Lift, Transform and Project.** We shall understand these 3 operations with code and some epic animations!
 
 ### 1. Lift
 
@@ -207,4 +207,4 @@ Let's quickly recap what we actually accomplished here:
 
 You've officially bridged the massive gap between perception and control. Keep building, keep coding, and I'll see you on the road!
 
-PS. All the code is available here: [github pages link]
+PS. All the code is available here: [[Chic's Den](https://chicicecream.github.io/Articles/posts/Understanding-Homography-and-Inverse-Perspective-Mapping/)] and [[My GitHub](https://github.com/ChicIceCream/Articles/tree/main/IPM)]
