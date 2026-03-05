@@ -194,6 +194,11 @@ Here is the moment of truth. On the left is the raw perspective image from the f
       Original Image (Left) | BEV warped image (Right)
 </em></p>
 
+<div style="text-align: center;">
+  <img src="IPM/assets/Scene4_NuScenesTransformation.gif" alt="Visualizing the Transform operation" style="display: block; margin: 0 auto; width: 80%;">
+  <p style="margin-top: 10px;"><em>Perspective to Metric basis via IPM</em></p>
+</div>
+
 This looks wild, but it is mathematically perfect IPM. Our matrix makes one huge assumption: Everything lies flat on the ground. Because the lane is flat, the lines and road texture become a perfect metric map (like a drone shot). But any 3D object sticking up from the asphalt — like the barriers or that tree — violates the assumption. The matrix "thinks" the whole tree is just pavement so it flattens it across the canvas. That smearing is the signature of a successful IPM!
 
 ## Conclusion
